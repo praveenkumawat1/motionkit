@@ -10,7 +10,7 @@
     "dev": "vite",
     "server": "node server/index.js",
     "dev:full": "concurrently \"npm run dev\" \"npm run server\"",
-    "build": "vite build",
+    "build": "node ./node_modules/vite/bin/vite.js build",
     "build:package": "npm run build --workspace motionkit",
     "pack:package": "npm pack --workspace motionkit",
     "publish:package": "npm publish --workspace motionkit --access public",
