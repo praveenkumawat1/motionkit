@@ -1,0 +1,42 @@
+{
+  "name": "motionkit-hero",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/index.js",
+    "dev:full": "concurrently \"npm run dev\" \"npm run server\"",
+    "build": "vite build",
+    "build:package": "npm run build --workspace motionkit",
+    "pack:package": "npm pack --workspace motionkit",
+    "publish:package": "npm publish --workspace motionkit --access public",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.468.0",
+    "motionkit": "^0.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@typescript/typescript6": "^6.0.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "concurrently": "^10.0.6",
+    "tailwindcss": "^4.1.11",
+    "vite": "^6.1.0",
+    "vite-plugin-dts": "^5.1.2"
+  },
+  "description": "",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

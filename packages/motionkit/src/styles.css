@@ -1,0 +1,55 @@
+.mk-magnetic {
+  --motionkit-x: 0px;
+  --motionkit-y: 0px;
+  transform: translate3d(var(--motionkit-x), var(--motionkit-y), 0);
+  transition: transform 260ms cubic-bezier(.22, 1, .36, 1);
+  will-change: transform;
+}
+
+.mk-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 700ms cubic-bezier(.22, 1, .36, 1), transform 700ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.mk-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.mk-text-reveal {
+  display: inline;
+}
+
+.mk-text-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: mk-word-in 700ms cubic-bezier(.22, 1, .36, 1) forwards;
+  animation-delay: calc(var(--motionkit-delay) + var(--motionkit-index, 0) * 60ms);
+}
+
+.mk-cursor-trail {
+  position: fixed;
+  z-index: 2147483647;
+  top: calc(var(--motionkit-size) / -2);
+  left: calc(var(--motionkit-size) / -2);
+  width: var(--motionkit-size);
+  height: var(--motionkit-size);
+  pointer-events: none;
+  border: 2px solid var(--motionkit-color);
+  border-radius: 999px;
+  transform: translate3d(-100px, -100px, 0);
+  transition: transform 80ms linear;
+}
+
+@keyframes mk-word-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-magnetic { transform: none; transition: none; }
+  .mk-reveal { opacity: 1; transform: none; transition: none; }
+  .mk-text-word { opacity: 1; transform: none; animation: none; }
+  .mk-cursor-trail { display: none; }
+}
